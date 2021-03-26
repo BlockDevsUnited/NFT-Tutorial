@@ -18,7 +18,7 @@ Steps
    - 
 
 
-BONUS: Connect Metadata
+- BONUS: Connect Metadata
   - Upload Metadata to IPFS
   - Mint with IPFS hash
   - View on Opensea
