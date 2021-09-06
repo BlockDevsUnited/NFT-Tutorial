@@ -3,6 +3,12 @@ Deploy an NFT project on Ethereum
 
 This Tutorial assumes you have installed nodejs and npm
 
+## Resources for Beginners
+If this is your first time to develop ethereum contracts you can follow the resources below to get started:
+1. Set up a development environment. This project can be completed in [Remix - Ethereum IDE](https://remix.ethereum.org/). For more complex project, we recommend a development environment such as [Visual Studio Code](https://code.visualstudio.com/) with [Solity](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity) extention installed.
+1. Set up a HardHat project using [OpenZeppelin Learn](https://docs.openzeppelin.com/learn/)
+1. Become familiar with Solidity Programming Lanuguage using a tutorial such as [BEGINNER SOLIDITY TUTORIAL (Learn Solidity in 45 Minutes 2021)](https://www.youtube.com/watch?v=_T_LC-hXU8U)
+
 ## Start Hardhat Project
 
 Create a new directory and install hardhat
