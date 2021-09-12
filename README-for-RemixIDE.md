@@ -8,7 +8,7 @@ The Week 1 [NFT-Tutorial] (https://github.com/BlockDevsUnited/NFT-Tutorial) can 
 
 1. Open [Remix IDE](https://remix.ethereum.org/) in Web Browser
 
-1. Add a workspace and name is "Week 1"
+1. Add a workspace and name it "Week 1"
 
 1. Delete all files and folders except for empty contracts folder. 
 
