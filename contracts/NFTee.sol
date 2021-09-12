@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
@@ -15,7 +16,7 @@ contract GameItem is ERC721 {
       return tokenURIs[tokenId];
     }
 
-    function create(address player, string memory tokenURI)
+    function create(address player, string memory mytokenURI)
         public
         returns (uint256)
     {
@@ -23,7 +24,7 @@ contract GameItem is ERC721 {
 
         uint256 newItemId = _tokenIds.current();
         _mint(player, newItemId);
-        tokenURIs[newItemId] = tokenURI;
+        tokenURIs[newItemId] = mytokenURI;
         //_setTokenURI(newItemId, tokenURI);
 
         return newItemId;
