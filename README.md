@@ -12,7 +12,7 @@ cd NFTutorial
 npm install --save-dev hardhat
 ```
 
-We recommend reviewing the hardhat documentation here
+We recommend reviewing the [hardhat documentation and tutorial](https://hardhat.org).
 
 Next, start a hardhat project
 
@@ -34,41 +34,8 @@ npm install @openzeppelin/contracts
 
 You can delete Greeter.sol.
 
-In the contracts folder, create a new solidity file called myNFT.sol and add the following code
+In the contracts folder, create a new solidity file called NFTee.sol and add the code from the [sample NFTee.sol contract](https://github.com/BlockDevsUnited/NFT-Tutorial/blob/main/contracts/NFTee.sol) in this repo.
 
-```
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-
-contract NFT is ERC721 {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
-
-    constructor() ERC721("GameItem", "ITM") {}
-
-    mapping(uint => string) tokenURIs;
-
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-      return tokenURIs[tokenId];
-    }
-
-    function create(address player, string memory tokenURI)
-        public
-        returns (uint256)
-    {
-        _tokenIds.increment();
-
-        uint256 newItemId = _tokenIds.current();
-        _mint(player, newItemId);
-        tokenURIs[newItemId] = tokenURI;
-
-        return newItemId;
-    }
-}
-
-```
 Try customizing the solidity code with the name of your NFT.
 
 ## Compile the contract
@@ -120,13 +87,13 @@ You must add your own account private key and provider url to the config
 
 First, you must write a deploy script. Go to deploy.js in the scripts folder.
 
-Inside function main(), add the code to deploy your contract
+Inside function main(), add the code to deploy your contract similar to [deploy.js](https://github.com/BlockDevsUnited/NFT-Tutorial/blob/main/scripts/deploy.js) in this repo
 
 ```
 async function main() {
   // We get the contract to deploy
-  const myNFT = await ethers.getContractFactory("myNFT");
-  const myNFT = await myNFT.deploy();
+  const GameItem = await ethers.getContractFactory("GameItem");
+  const gameItem = await GameItem.deploy();
 }
 ```
 
