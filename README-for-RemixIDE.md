@@ -29,14 +29,11 @@ These are the steps to compile the contract:
 
 1. Select ```Compile``` tab from the left menu in Remix IDE. This opens compiler settings.
 
-1. Set up the following compiler settings:
-```
+1. Set up the following compiler settings:```
 COMPILER: Select compiler version that matches "pragma solidity" line in your contract code
 LANGUAGE: Solidity
 EVM VERSION: Compiler default
-COMPILER CONFIGURATION: Leave all boxes unchecked
-```
-
+COMPILER CONFIGURATION: Leave all boxes unchecked ```
 1. Click on Compile button
 
 Any error or warkings will appear under the Compiler button. Scroll down to see them. 
