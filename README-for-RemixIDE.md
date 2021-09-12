@@ -99,7 +99,7 @@ On page 2 of the form, you will need the flattened source code of your contract.
 1. Open the NFTee_flat.sol file in Remix IDE and compile it. If there are compilation errors, fix them. Generally, we encountered two types of errors:
   - A line ```// SPDX-License-Identifier: MIT``` is needed at the top of the flattened file
   - Object need to be defined before than can be used. Move their definitions towards the beginning of the flattened file.
-1. When the flattened file compiles without errors in Remis IDE, you are ready to copy it in the Etherscan verification form
+5. When the flattened file compiles without errors in Remis IDE, you are ready to copy it in the Etherscan verification form
 
 ## Interact with your contract on Etherscan
 
