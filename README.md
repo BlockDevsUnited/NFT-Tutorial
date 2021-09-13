@@ -105,15 +105,52 @@ npx hardhat run --network rinkeby scripts/deploy.js
 
 To see if your contract has been deployed, check your account in etherscan.io. A new transaction should appear, and the transaction should deploy a new contract!
 
-## Verify on Etherscan
+Tip: It's usefull to save the address of your new smart contract in somewhere you can access it easily
+
+## Verify and Publishing on Etherscan
+
+Now you need to verify and publish your smart contract. This is the next step after deploying.
 
 To verify your contract on etherscan, you must first flatten your entire contract.
 
+- create a folder called flattenedContracts
+- execute the command below
+
 ```
-npx hardhat flatten
+npx hardhat flatten > ./flattenedContracts/flattenedContract.sol
+```
+Now you have a new file. This is the flattened contract.
+
+Take the code, and clean it up, then verify and publish it on etherscan.
+
+What does mean cleaning it up in this case? Your new file (the flattened contract) has some comments in it like this:
+
+```
+// SPDX-License-Identifier: MIT
 ```
 
-Take the code, and clean it up, then verify it on etherscan.
+So you need to guarantee this comment just appears one time in the entire code.
+
+- edit the flattened contract
+- go to https://rinkeby.etherscan.io/ and find your smart contract
+
+Click on the option "Contract" that is next to option "Transactions" and then click on the hiperlink "Verify and Publish"
+
+- fill the form
+
+Forms fields:
+
+i) Your smart contract address
+ii) The compiler version used
+iii) In the Open Source License Type:
+
+- select "MIT License"
+
+Finally you will require to put the Solidity Contract Code in the corresponding form field
+
+- copy and paste your flattened contract code
+
+If everything went well you will have your contract verified and published.
 
 ## Play with your new NFT contract
 
