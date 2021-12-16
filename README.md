@@ -132,7 +132,7 @@ etherscan: {
 
 Once you have done this, run the following command to verify your contract!
 
-`npx hardhat verify --network rinkeby DEPLOYED_CONTRACT_ADDRESS"`
+`npx hardhat verify --network rinkeby DEPLOYED_CONTRACT_ADDRESS`
 
 After this, load up your contract address on Etherscan, and click on the `Contract` tab to ensure it has been verified!
 
