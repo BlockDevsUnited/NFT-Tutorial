@@ -107,13 +107,34 @@ To see if your contract has been deployed, check your account in etherscan.io. A
 
 ## Verify on Etherscan
 
-To verify your contract on etherscan, you must first flatten your entire contract.
+To verify your contract on etherscan, install the Etherscan plugin for Hardhat
 
 ```
-npx hardhat flatten
+npm install --save-dev @nomiclabs/hardhat-etherscan
 ```
 
-Take the code, and clean it up, then verify it on etherscan.
+Then, get an API Key for Etherscan by signing up at https://etherscan.io/myaccount
+
+Then, we have to configure `hardhat.config.js` to use the plugin
+
+First, add the following `require` statement at the top:
+`require("@nomiclabs/hardhat-etherscan");`
+
+Then, add an `etherscan` object in the exported configuration object. 
+
+```
+etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: YOUR_ETHERSCAN_API_KEY
+  },
+```
+
+Once you have done this, run the following command to verify your contract!
+
+`npx hardhat verify --network rinkeby DEPLOYED_CONTRACT_ADDRESS"`
+
+After this, load up your contract address on Etherscan, and click on the `Contract` tab to ensure it has been verified!
 
 ## Play with your new NFT contract
 
