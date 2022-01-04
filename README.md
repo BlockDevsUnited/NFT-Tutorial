@@ -156,6 +156,6 @@ module.exports = {
 
 ## Verify on Etherscan
 
-- Go to [Rinkeby Ethersan](https://rinkeby.etherscan.io/) and search for the address that was printed.
+- Go to [Rinkeby Etherscan](https://rinkeby.etherscan.io/) and search for the address that was printed.
 - If the `address` opens up on etherscan, you have deployed your first NFT 🎉
 - Go to the transaction details by clicking on the transaction hash, check that there was a token transfered to your address
