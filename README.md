@@ -106,7 +106,7 @@ main()
   });
 ```
 
-- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines.Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: https://faucet.rinkeby.io/
+- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines.Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: [https://faucet.rinkeby.io/](https://faucet.rinkeby.io/)
 
 ```
 
