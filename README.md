@@ -31,7 +31,10 @@ Hardhat is an Ethereum development environment and framework designed for full s
   npx hardhat
   ```
 
-  and press `enter` for all the questions.
+  - Select `Create a basic sample project`
+  - Press enter for the already specified `Hardhat Project root`
+  - Press enter for the question on if you want to add a `.gitignore`
+  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers)?`
 
 Now you have a hardhat project ready to go!
 
