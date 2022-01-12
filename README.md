@@ -115,7 +115,7 @@ main()
   });
 ```
 
-- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines.Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: [https://faucet.rinkeby.io/](https://faucet.rinkeby.io/)
+- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: [https://faucet.rinkeby.io/](https://faucet.rinkeby.io/)
 
 ```
 
@@ -130,6 +130,8 @@ ALCHEMY_API_KEY_URL="add-the-alchemy-key-url-here"
 RINKEBY_PRIVATE_KEY="add-the-rinkeby-private-key-here"
 
 ```
+
+You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to rinkeby.
 
 - Now we would install `dotenv` package to be able to import the env file and use it in our config.
   In your terminal, execute these commands.
