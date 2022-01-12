@@ -38,6 +38,12 @@ Hardhat is an Ethereum development environment and framework designed for full s
 
 Now you have a hardhat project ready to go!
 
+If you are not on mac, please do this extra step and install these libraries as well :)
+
+```bash
+npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+```
+
 ---
 
 ## Write NFT Contract Code
