@@ -178,4 +178,3 @@ module.exports = {
 - If the `address` opens up on etherscan, you have deployed your first NFT 🎉
 - Go to the transaction details by clicking on the transaction hash, check that there was a token transfered to your address
 - If the NFT token doesn't show up in your wallet, click on import token and enter your contract `address`, remember that the decimals should be set to 0.
-- Yay! Now go to `#😎|showcase` channel in Discord and share the screenshot of your newly formed NFT.
