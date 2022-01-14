@@ -168,7 +168,7 @@ module.exports = {
 
 - To deploy in your terminal type:
   ```bash
-      npx hardhat run scripts/deploy.js --network rinkeby
+  npx hardhat run scripts/deploy.js --network rinkeby
   ```
 - Save the NFT Contract Address that was printed on your terminal in your notepad, you would need it.
 
