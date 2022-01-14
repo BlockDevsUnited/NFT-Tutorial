@@ -5,7 +5,14 @@ Deploy an NFT project on Ethereum
 ## Prerequisites
 
 - Set up a Metamask (Beginner Track - [Level-4](https://github.com/LearnWeb3DAO/Crypto-Wallets))
-- Check if your computer has Node.js. If not download from [here](https://nodejs.org/en/download/)
+- Check if your computer has Node.js. 
+  Run This command in the terminal-
+  
+  ``` bash
+  node -v
+  ```
+  
+  If this command does not return any version of NodeJS download NodeJS from [here](https://nodejs.org/en/download/)
 
 ---
 
@@ -50,7 +57,7 @@ npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs
 
 Lets install Open Zeppelin contracts, In the terminal window execute this command
 
-```
+```bash
 npm install @openzeppelin/contracts
 ```
 
@@ -65,7 +72,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 // GameItem is  ERC721 signifies that the contract we are creating imports ERC721 and follows ERC721 contract from openzeppelin
-contract GameItem is ERC721 {
+ contract GameItem is ERC721 {
 
     constructor() ERC721("GameItem", "ITM") {
         // mint an NFT to yourself
@@ -117,21 +124,21 @@ main()
 
 - Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: [https://faucet.rinkeby.io/](https://faucet.rinkeby.io/)
 
-```
+```js
 
 // Go to https://www.alchemyapi.io, sign up, create
 // a new App in its dashboard and select the network as Rinkeby, and replace "add-the-alchemy-key-url-here" with its key url
-ALCHEMY_API_KEY_URL="add-the-alchemy-key-url-here"
+ALCHEMY_API_KEY_URL = "add-the-alchemy-key-url-here"
 
 // Replace this private key with your RINKEBY account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
 // Be aware of NEVER putting real Ether into testing accounts
-RINKEBY_PRIVATE_KEY="add-the-rinkeby-private-key-here"
+RINKEBY_PRIVATE_KEY = "add-the-rinkeby-private-key-here"
 
 ```
 
-You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to rinkeby.
+You can think of Alchemy as AWS Elastic Compute Cloud for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to rinkeby.
 
 - Now we would install `dotenv` package to be able to import the env file and use it in our config.
   In your terminal, execute these commands.
@@ -170,3 +177,5 @@ module.exports = {
 - Go to [Rinkeby Etherscan](https://rinkeby.etherscan.io/) and search for the address that was printed.
 - If the `address` opens up on etherscan, you have deployed your first NFT 🎉
 - Go to the transaction details by clicking on the transaction hash, check that there was a token transfered to your address
+- If the NFT token doesn't show up in your wallet, click on import token and enter your contract address, remember that the decimals should be set to 0.
+- Yay! Now go to #showcase channel in Discord and share the screenshot of your newly formed NFT.
