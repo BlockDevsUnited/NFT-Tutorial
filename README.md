@@ -1,6 +1,6 @@
 # Level 9 - NFT-Tutorial
 
-Deploy an NFT project on Ethereum
+Deploy a NFT project on Ethereum
 
 ## Prefer a Video?
 If you would rather learn from a video, we have a recording available of this tutorial on our YouTube. Watch the video by clicking on the screenshot below, or go ahead and read the tutorial!
