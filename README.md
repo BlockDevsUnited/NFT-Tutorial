@@ -1,7 +1,5 @@
 # Level 9 - NFT-Tutorial 
 
-### Forked from https://github.com/BlockDevsUnited/NFT-Tutorial
-
 Deploy a NFT project on Ethereum
 
 ## Prefer a Video?
@@ -38,17 +36,17 @@ Hardhat is an Ethereum development environment and framework designed for full s
   npx hardhat
   ```
 
-  - Select `Create a basic sample project`
+  - Select `Create a Javascript project`
   - Press enter for the already specified `Hardhat Project root`
   - Press enter for the question on if you want to add a `.gitignore`
-  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers)?`
+  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomicfoundation/hardhat-toolbox)?`
 
 Now you have a hardhat project ready to go!
 
-If you are not on mac, please do this extra step and install these libraries as well :)
+If you are on Windows, please do this extra step and install these libraries as well :)
 
 ```bash
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+npm install --save-dev @nomicfoundation/hardhat-toolbox
 ```
 
 ---
@@ -91,9 +89,7 @@ If there are no errors, you are good to go :)
 
 ## Configuring Deployment
 
-- Lets deploy the contract to `rinkeby` network. First, create a new file named `deploy.js` under `scripts` folder
-
-- Now we would write some code to deploy the contract in `deploy.js` file.
+Lets deploy the contract to `rinkeby` test network. To do this, we'll write a deployment script and then configure the network. First, create a new file/replace the default file named `deploy.js` under the `scripts` folder, and write the following code there:
 
 ```js
 // Import ethers from Hardhat package
@@ -122,7 +118,7 @@ main()
   });
 ```
 
-- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and RINKEBY Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether.You can get some here: [https://www.rinkebyfaucet.com/](https://www.rinkebyfaucet.com/)
+- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and Rinkeby Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether. You can get some here: [https://www.rinkebyfaucet.com/](https://www.rinkebyfaucet.com/)
 
 ```
 
@@ -148,15 +144,14 @@ You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It he
 - Now open the hardhat.config.js file, we would add the `rinkeby` network here so that we can deploy our contract to rinkeby. Replace all the lines in the `hardhat.config.js` file with the given below lines
 
 ```js
-require("@nomiclabs/hardhat-waffle");
+require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config({ path: ".env" });
 
 const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
-
 const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
 
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.9",
   networks: {
     rinkeby: {
       url: ALCHEMY_API_KEY_URL,
