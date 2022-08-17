@@ -1,128 +1,177 @@
-# NFT-Tutorial
-Deploy an NFT project on Ethereum
+# Level 9 - NFT-Tutorial 
 
-This Tutorial assumes you have installed nodejs and npm
+Deploy a NFT project on Ethereum
 
-## Start Hardhat Project
+## Prefer a Video?
+If you would rather learn from a video, we have a recording available of this tutorial on our YouTube. Watch the video by clicking on the screenshot below, or go ahead and read the tutorial!
 
-Create a new directory and install hardhat
-```
-mkdir NFTutorial
-cd NFTutorial
-npm install --save-dev hardhat
-```
+[![Cryptocurrency Tutorial](https://i.imgur.com/klHysek.png)](https://www.youtube.com/watch?v=uwnAXAsd428 "NFT Tutorial")
 
-We recommend reviewing the [hardhat documentation and tutorial](https://hardhat.org).
+## Prerequisites
 
-Next, start a hardhat project
+- Set up a Metamask (Beginner Track - [Level-4](https://github.com/LearnWeb3DAO/Crypto-Wallets))
+- Check if your computer has Node.js. If not download from [here](https://nodejs.org/en/download/)
 
-```
-npx hardhat
-```
+---
 
-Select "Create a sample hardhat project". You can say yes to everything.
+## Build
+
+### Smart Contract
+
+To build the smart contract we would be using [Hardhat](https://hardhat.org/).
+Hardhat is an Ethereum development environment and framework designed for full stack development. In simple words you can write your smart contract, deploy them, run tests, and debug your code.
+
+- To setup a Hardhat project, Open up a terminal and execute these commands
+
+  ```bash
+  mkdir NFT-Tutorial
+  cd  NFT-Tutorial
+  npm init --yes
+  npm install --save-dev hardhat
+  ```
+
+- In the same directory where you installed Hardhat run:
+
+  ```bash
+  npx hardhat
+  ```
+
+  - Select `Create a Javascript project`
+  - Press enter for the already specified `Hardhat Project root`
+  - Press enter for the question on if you want to add a `.gitignore`
+  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomicfoundation/hardhat-toolbox)?`
 
 Now you have a hardhat project ready to go!
 
+If you are on Windows, please do this extra step and install these libraries as well :)
+
+```bash
+npm install --save-dev @nomicfoundation/hardhat-toolbox
+```
+
+---
+
 ## Write NFT Contract Code
 
-First, install Open Zeppelin contracts
+Lets install Open Zeppelin contracts, In the terminal window execute this command
 
 ```
 npm install @openzeppelin/contracts
 ```
 
-You can delete Greeter.sol.
+- In the contracts folder, create a new solidity file called NFTee.sol
+- Now we would write some code in the NFTee.sol file. We would be importing [Openzeppelin's ERC721 Contract](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol). ERC721 is the most common standard for creating NFT's. In the freshman track, we would only be using ERC721. In the sophomore track, you would learn more about ERC721's in detail. So dont worry, if you dont understand everything :)
 
-In the contracts folder, create a new solidity file called NFTee.sol and add the code from the [sample NFTee.sol contract](https://github.com/BlockDevsUnited/NFT-Tutorial/blob/main/contracts/NFTee.sol) in this repo.
+```js
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-Try customizing the solidity code with the name of your NFT.
+// Import the openzepplin contracts
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-## Compile the contract
+// GameItem is  ERC721 signifies that the contract we are creating imports ERC721 and follows ERC721 contract from openzeppelin
+contract GameItem is ERC721 {
 
-To compile the contract, just go
-
+    constructor() ERC721("GameItem", "ITM") {
+        // mint an NFT to yourself
+        _mint(msg.sender, 1);
+    }
+}
 ```
+
+- Compile the contract, open up a terminal and execute these commands
+
+```bash
 npx hardhat compile
 ```
 
+If there are no errors, you are good to go :)
+
 ## Configuring Deployment
 
-We are going to deploy the NFT contract on the Rinkeby Testnet.
+Lets deploy the contract to `rinkeby` test network. To do this, we'll write a deployment script and then configure the network. First, create a new file/replace the default file named `deploy.js` under the `scripts` folder, and write the following code there:
 
-First, make sure you get some rinkeby testnet Ether.  You can get some here: https://faucet.rinkeby.io/
+```js
+// Import ethers from Hardhat package
+const { ethers } = require("hardhat");
 
-Next, set up a rinkeby provider. You can get one from alchemyapi.io
-It should look like: https://eth-rinkeby.alchemyapi.io/v2/......
-
-Next, configure module.exports in hardhat.config.js
-
-```
-defaultNetwork: "rinkeby",
-networks: {
-  hardhat: {
-  },
-  rinkeby: {
-    url: "",
-    accounts: [""]
-  }
-},
-solidity: {
-  version: "0.8.0"
-},
-paths: {
-  sources: "./contracts",
-  tests: "./test",
-  cache: "./cache",
-  artifacts: "./artifacts"
-},
-mocha: {
-  timeout: 20000
-}
-```
-
-You must add your own account private key and provider url to the config
-
-## Deploy Contract
-
-First, you must write a deploy script. Go to deploy.js in the scripts folder.
-
-Inside function main(), add the code to deploy your contract similar to [deploy.js](https://github.com/BlockDevsUnited/NFT-Tutorial/blob/main/scripts/deploy.js) in this repo
-
-```
 async function main() {
-  // We get the contract to deploy
-  const GameItem = await ethers.getContractFactory("GameItem");
-  const gameItem = await GameItem.deploy();
+  /*
+A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
+so nftContract here is a factory for instances of our GameItem contract.
+*/
+  const nftContract = await ethers.getContractFactory("GameItem");
+
+  // here we deploy the contract
+  const deployedNFTContract = await nftContract.deploy();
+  
+  // wait for the contract to deploy
+  await deployedNFTContract.deployed();
+
+  // print the address of the deployed contract
+  console.log("NFT Contract Address:", deployedNFTContract.address);
 }
+
+// Call the main function and catch if there is any error
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
 ```
 
-If everything is configured properly, you can now deploy. In your terminal, run the deploy command
+- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and Rinkeby Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether. You can get some here: [https://www.rinkebyfaucet.com/](https://www.rinkebyfaucet.com/)
 
 ```
-npx hardhat run --network rinkeby scripts/deploy.js
+
+# Go to https://www.alchemyapi.io, sign up, create
+# a new App in its dashboard and select the network as Rinkeby, and replace "add-the-alchemy-key-url-here" with its key url
+ALCHEMY_API_KEY_URL="add-the-alchemy-key-url-here"
+
+# Replace this private key with your RINKEBY account private key
+# To export your private key from Metamask, open Metamask and
+# go to Account Details > Export Private Key
+# Be aware of NEVER putting real Ether into testing accounts
+RINKEBY_PRIVATE_KEY="add-the-rinkeby-private-key-here"
+
 ```
 
-To see if your contract has been deployed, check your account in etherscan.io. A new transaction should appear, and the transaction should deploy a new contract!
+You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to rinkeby.
+
+- Now we would install `dotenv` package to be able to import the env file and use it in our config.
+  In your terminal, execute these commands.
+  ```bash
+  npm install dotenv
+  ```
+- Now open the hardhat.config.js file, we would add the `rinkeby` network here so that we can deploy our contract to rinkeby. Replace all the lines in the `hardhat.config.js` file with the given below lines
+
+```js
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config({ path: ".env" });
+
+const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
+
+module.exports = {
+  solidity: "0.8.9",
+  networks: {
+    rinkeby: {
+      url: ALCHEMY_API_KEY_URL,
+      accounts: [RINKEBY_PRIVATE_KEY],
+    },
+  },
+};
+```
+
+- To deploy in your terminal type:
+  ```bash
+      npx hardhat run scripts/deploy.js --network rinkeby
+  ```
+- Save the NFT Contract Address that was printed on your terminal in your notepad, you would need it.
 
 ## Verify on Etherscan
 
-To verify your contract on etherscan, you must first flatten your entire contract.
-
-```
-npx hardhat flatten
-```
-
-Take the code, and clean it up, then verify it on etherscan.
-
-## Play with your new NFT contract
-
-   - Mint token
-   - Transfer Token
-
-
-## View your NFT on OpenSea
-
-- get a metadata link
-- Upload to Opensea
-- view on opensea
+- Go to [Rinkeby Etherscan](https://rinkeby.etherscan.io/) and search for the address that was printed.
+- If the `address` opens up on etherscan, you have deployed your first NFT 🎉
+- Go to the transaction details by clicking on the transaction hash, check that there was a token transfered to your address
