@@ -89,7 +89,7 @@ If there are no errors, you are good to go :)
 
 ## Configuring Deployment
 
-Lets deploy the contract to `rinkeby` test network. To do this, we'll write a deployment script and then configure the network. First, create a new file/replace the default file named `deploy.js` under the `scripts` folder, and write the following code there:
+Lets deploy the contract to `Goerli` test network. To do this, we'll write a deployment script and then configure the network. First, create a new file/replace the default file named `deploy.js` under the `scripts` folder, and write the following code there:
 
 ```js
 // Import ethers from Hardhat package
@@ -121,44 +121,44 @@ main()
   });
 ```
 
-- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and Rinkeby Private Key. Make sure that the account from which you get your rinkeby private key is funded with Rinkeby Ether. You can get some here: [https://www.rinkebyfaucet.com/](https://www.rinkebyfaucet.com/)
+- Now create a `.env` file in the `NFT-Tutorial` folder and add the following lines. Use the instructions in the comments to get your Alchemy API Key and Goerli Private Key. Make sure that the account from which you get your Goerli private key is funded with Goerli Ether. You can get some here: [https://goerlifaucet.com/](https://goerlifaucet.com/)
 
 ```
 
 # Go to https://www.alchemyapi.io, sign up, create
-# a new App in its dashboard and select the network as Rinkeby, and replace "add-the-alchemy-key-url-here" with its key url
+# a new App in its dashboard and select the network as Goerli, and replace "add-the-alchemy-key-url-here" with its key url
 ALCHEMY_API_KEY_URL="add-the-alchemy-key-url-here"
 
-# Replace this private key with your RINKEBY account private key
+# Replace this private key with your Goerli account private key
 # To export your private key from Metamask, open Metamask and
 # go to Account Details > Export Private Key
 # Be aware of NEVER putting real Ether into testing accounts
-RINKEBY_PRIVATE_KEY="add-the-rinkeby-private-key-here"
+Goerli_PRIVATE_KEY="add-the-goerli-private-key-here"
 
 ```
 
-You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to rinkeby.
+You can think of Alchemy as AWS EC2 for blockchain. It is a node provider. It helps us to connect with the blockchain by providing us with nodes so that we can read and write to the blockchain. Alchemy is what helps us deploy the contract to Goerli.
 
 - Now we would install `dotenv` package to be able to import the env file and use it in our config.
   In your terminal, execute these commands.
   ```bash
   npm install dotenv
   ```
-- Now open the hardhat.config.js file, we would add the `rinkeby` network here so that we can deploy our contract to rinkeby. Replace all the lines in the `hardhat.config.js` file with the given below lines
+- Now open the hardhat.config.js file, we would add the `goerli` network here so that we can deploy our contract to Goerli. Replace all the lines in the `hardhat.config.js` file with the given below lines
 
 ```js
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config({ path: ".env" });
 
 const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
+const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
 
 module.exports = {
   solidity: "0.8.9",
   networks: {
-    rinkeby: {
+    goerli: {
       url: ALCHEMY_API_KEY_URL,
-      accounts: [RINKEBY_PRIVATE_KEY],
+      accounts: [GOERLI_PRIVATE_KEY],
     },
   },
 };
@@ -166,12 +166,12 @@ module.exports = {
 
 - To deploy in your terminal type:
   ```bash
-      npx hardhat run scripts/deploy.js --network rinkeby
+      npx hardhat run scripts/deploy.js --network goerli
   ```
 - Save the NFT Contract Address that was printed on your terminal in your notepad, you would need it.
 
 ## Verify on Etherscan
 
-- Go to [Rinkeby Etherscan](https://rinkeby.etherscan.io/) and search for the address that was printed.
+- Go to [Goerli Etherscan](https://goerli.etherscan.io/) and search for the address that was printed.
 - If the `address` opens up on etherscan, you have deployed your first NFT 🎉
 - Go to the transaction details by clicking on the transaction hash, check that there was a token transfered to your address
