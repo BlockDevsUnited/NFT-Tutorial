@@ -4,6 +4,7 @@ Deploy a NFT project on Ethereum
 
 ## Prefer a Video?
 If you would rather learn from a video, we have a recording available of this tutorial on our YouTube. Watch the video by clicking on the screenshot below, or go ahead and read the tutorial!
+Note :- The Following Vido tutorial is based on Rinkeby testnet but the text tutorial is based on Goerli for future support.
 
 [![Cryptocurrency Tutorial](https://i.imgur.com/klHysek.png)](https://www.youtube.com/watch?v=uwnAXAsd428 "NFT Tutorial")
 
